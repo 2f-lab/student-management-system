@@ -10,8 +10,11 @@ def show_title():
 def show_students():
     print("\nCurrent Students:\n")
 
-    for student in students:
-        print(student)
+    if len(students) == 0:
+        print("No students found.")
+    else:
+        for student in students:
+            print(student)
 
     print(f"\nTotal Students: {len(students)}")
 
@@ -26,13 +29,26 @@ def add_student():
     print(f"\n{new_student} added successfully!")
 
 
+def remove_student():
+    print("\nREMOVE STUDENT")
+
+    student_name = input("Enter student name to remove: ")
+
+    if student_name in students:
+        students.remove(student_name)
+        print(f"\n{student_name} removed successfully!")
+    else:
+        print("\nStudent not found.")
+
+
 while True:
 
     show_title()
 
     print("\n1. View Students")
     print("2. Add Student")
-    print("3. Exit")
+    print("3. Remove Student")
+    print("4. Exit")
 
     choice = input("\nChoose an option: ")
 
@@ -43,8 +59,11 @@ while True:
         add_student()
 
     elif choice == "3":
+        remove_student()
+
+    elif choice == "4":
         print("\nGoodbye!")
         break
 
     else:
-        print("\nInvalid choice. Try again.")
+        print("\nInvalid choice. Please try again.")
