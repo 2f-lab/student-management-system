@@ -41,6 +41,17 @@ def remove_student():
         print("\nStudent not found.")
 
 
+def search_student():
+    print("\nSEARCH STUDENT")
+
+    student_name = input("Enter student name to search: ")
+
+    if student_name in students:
+        print(f"\n✓ {student_name} is in the student list.")
+    else:
+        print(f"\n✗ {student_name} was not found.")
+
+
 while True:
 
     show_title()
@@ -48,7 +59,8 @@ while True:
     print("\n1. View Students")
     print("2. Add Student")
     print("3. Remove Student")
-    print("4. Exit")
+    print("4. Search Student")
+    print("5. Exit")
 
     choice = input("\nChoose an option: ")
 
@@ -62,6 +74,9 @@ while True:
         remove_student()
 
     elif choice == "4":
+        search_student()
+
+    elif choice == "5":
         print("\nGoodbye!")
         break
 
