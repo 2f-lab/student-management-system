@@ -23,13 +23,22 @@ def add_student():
 
     students.append(new_student)
 
-    print(f"{new_student} added successfully!")
+    print(f"\n{new_student} added successfully!")
 
 
 show_title()
 
-show_students()
+print("\n1. View Students")
+print("2. Add Student")
 
-add_student()
+choice = input("\nChoose an option: ")
 
-show_students()
+if choice == "1":
+    show_students()
+
+elif choice == "2":
+    add_student()
+    show_students()
+
+else:
+    print("Invalid choice.")
