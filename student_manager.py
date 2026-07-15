@@ -26,19 +26,25 @@ def add_student():
     print(f"\n{new_student} added successfully!")
 
 
-show_title()
+while True:
 
-print("\n1. View Students")
-print("2. Add Student")
+    show_title()
 
-choice = input("\nChoose an option: ")
+    print("\n1. View Students")
+    print("2. Add Student")
+    print("3. Exit")
 
-if choice == "1":
-    show_students()
+    choice = input("\nChoose an option: ")
 
-elif choice == "2":
-    add_student()
-    show_students()
+    if choice == "1":
+        show_students()
 
-else:
-    print("Invalid choice.")
+    elif choice == "2":
+        add_student()
+
+    elif choice == "3":
+        print("\nGoodbye!")
+        break
+
+    else:
+        print("\nInvalid choice. Try again.")
