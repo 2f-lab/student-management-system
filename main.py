@@ -1,11 +1,11 @@
-from student import Student
+from school import School
 
-student1 = Student("Brian", 25)
+school = School()
 
-student2 = Student("Sarah", 22)
+school.add_student("Brian", 25)
 
-student1.introduce()
+school.add_student("Sarah", 22)
 
-print()
+school.add_student("James", 24)
 
-student2.introduce()
+school.show_students()
