@@ -7,6 +7,7 @@ for line in file:
 
 file.close()
 
+
 def save_students():
 
     file = open("students.txt", "w")
@@ -16,13 +17,15 @@ def save_students():
 
     file.close()
 
+
 def show_title():
     print("=" * 35)
-    print(" STUDENT MANAGEMENT SYSTEM ")
+    print("   STUDENT MANAGEMENT SYSTEM")
     print("=" * 35)
 
 
 def show_students():
+
     print("\nCurrent Students:\n")
 
     if len(students) == 0:
@@ -35,34 +38,48 @@ def show_students():
 
 
 def add_student():
+
     print("\nADD NEW STUDENT")
 
-    new_student = input("Enter student name: ")
+    new_student = input("Enter student name: ").strip()
+
+    if new_student == "":
+        print("\nStudent name cannot be empty.")
+        return
+
+    if new_student in students:
+        print("\nStudent already exists.")
+        return
 
     students.append(new_student)
-    
+
     save_students()
 
     print(f"\n{new_student} added successfully!")
 
 
 def remove_student():
+
     print("\nREMOVE STUDENT")
 
-    student_name = input("Enter student name to remove: ")
+    student_name = input("Enter student name to remove: ").strip()
 
     if student_name in students:
         students.remove(student_name)
+
         save_students()
+
         print(f"\n{student_name} removed successfully!")
+
     else:
         print("\nStudent not found.")
 
 
 def search_student():
+
     print("\nSEARCH STUDENT")
 
-    student_name = input("Enter student name to search: ")
+    student_name = input("Enter student name to search: ").strip()
 
     if student_name in students:
         print(f"\n✓ {student_name} is in the student list.")
