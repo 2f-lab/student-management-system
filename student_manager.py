@@ -1,5 +1,20 @@
-students = ["Brian", "Sarah", "James"]
+students = []
 
+file = open("students.txt", "r")
+
+for line in file:
+    students.append(line.strip())
+
+file.close()
+
+def save_students():
+
+    file = open("students.txt", "w")
+
+    for student in students:
+        file.write(student + "\n")
+
+    file.close()
 
 def show_title():
     print("=" * 35)
@@ -25,6 +40,8 @@ def add_student():
     new_student = input("Enter student name: ")
 
     students.append(new_student)
+    
+    save_students()
 
     print(f"\n{new_student} added successfully!")
 
@@ -36,6 +53,7 @@ def remove_student():
 
     if student_name in students:
         students.remove(student_name)
+        save_students()
         print(f"\n{student_name} removed successfully!")
     else:
         print("\nStudent not found.")
