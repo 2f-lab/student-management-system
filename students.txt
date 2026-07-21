@@ -1,4 +1,3 @@
-Brian
-James
-peter
-Peter
+Brian,25
+Sarah,22
+James,24
