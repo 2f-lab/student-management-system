@@ -4,14 +4,19 @@ from student import Student
 class School:
 
     def __init__(self):
+
         self.students = []
         self.load_students()
 
     def add_student(self, name, age):
+
         student = Student(name, age)
+
         self.students.append(student)
+
         self.save_students()
-        print(f"\n{name} added successfully!")
+
+        print(f"{name} added successfully!")
 
     def remove_student(self, name):
 
@@ -20,27 +25,14 @@ class School:
             if student.name.lower() == name.lower():
 
                 self.students.remove(student)
+
                 self.save_students()
 
-                print(f"\n{name} removed successfully!")
+                print(f"{name} removed successfully!")
 
                 return
 
-        print("\nStudent not found.")
-
-    def search_student(self, name):
-
-        for student in self.students:
-
-            if student.name.lower() == name.lower():
-
-                print("\nStudent Found!\n")
-
-                student.view_details()
-
-                return
-
-        print("\nStudent not found.")
+        print("Student not found.")
 
     def show_students(self):
 
@@ -54,9 +46,7 @@ class School:
 
             for student in self.students:
 
-                student.view_details()
-
-                print()
+                print(student)
 
     def save_students(self):
 
@@ -92,4 +82,5 @@ class School:
         except FileNotFoundError:
 
             file = open("students.txt", "w")
+
             file.close()

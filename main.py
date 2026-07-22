@@ -4,17 +4,12 @@ school = School()
 
 while True:
 
-    print("\n" + "=" * 35)
-    print(" STUDENT MANAGEMENT SYSTEM ")
-    print("=" * 35)
-
+    print("\n===== MENU =====")
     print("1. View Students")
     print("2. Add Student")
-    print("3. Remove Student")
-    print("4. Search Student")
-    print("5. Exit")
+    print("3. Exit")
 
-    choice = input("\nChoose an option: ")
+    choice = input("Choice: ")
 
     if choice == "1":
 
@@ -22,37 +17,24 @@ while True:
 
     elif choice == "2":
 
-        name = input("Enter student name: ")
+        try:
 
-        while True:
+            name = input("Student Name: ")
 
-            try:
-                age = int(input("Enter age: "))
-                break
+            age = int(input("Age: "))
 
-            except ValueError:
-                print("Please enter a valid age.")
+            school.add_student(name, age)
 
-        school.add_student(name, age)
+        except ValueError as e:
+
+            print(f"\nError: {e}")
 
     elif choice == "3":
 
-        name = input("Enter student name to remove: ")
-
-        school.remove_student(name)
-
-    elif choice == "4":
-
-        name = input("Enter student name to search: ")
-
-        school.search_student(name)
-
-    elif choice == "5":
-
-        print("\nGoodbye!")
+        print("Goodbye!")
 
         break
 
     else:
 
-        print("\nInvalid choice. Please try again.")
+        print("Invalid choice.")
