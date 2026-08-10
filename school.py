@@ -1,86 +1,40 @@
 from student import Student
+from teacher import Teacher
 
 
 class School:
 
     def __init__(self):
-
-        self.students = []
-        self.load_students()
+        self.people = []
 
     def add_student(self, name, age):
 
         student = Student(name, age)
 
-        self.students.append(student)
+        self.people.append(student)
 
-        self.save_students()
+        print(f"{name} added successfully as a Student!")
 
-        print(f"{name} added successfully!")
+    def add_teacher(self, name, age):
 
-    def remove_student(self, name):
+        teacher = Teacher(name, age)
 
-        for student in self.students:
+        self.people.append(teacher)
 
-            if student.name.lower() == name.lower():
+        print(f"{name} added successfully as a Teacher!")
 
-                self.students.remove(student)
+    def show_people(self):
 
-                self.save_students()
+        print("\n===== PEOPLE =====")
 
-                print(f"{name} removed successfully!")
+        if len(self.people) == 0:
 
-                return
-
-        print("Student not found.")
-
-    def show_students(self):
-
-        print("\n===== STUDENTS =====")
-
-        if len(self.students) == 0:
-
-            print("No students.")
+            print("No people found.")
 
         else:
 
-            for student in self.students:
+            for person in self.people:
 
-                print(student)
+                person.introduce()
 
-    def save_students(self):
-
-        file = open("students.txt", "w")
-
-        for student in self.students:
-
-            file.write(f"{student.name},{student.age}\n")
-
-        file.close()
-
-    def load_students(self):
-
-        try:
-
-            file = open("students.txt", "r")
-
-            for line in file:
-
-                line = line.strip()
-
-                if line == "":
-                    continue
-
-                name, age = line.split(",")
-
-                student = Student(name, int(age))
-
-                self.students.append(student)
-
-            file.close()
-
-        except FileNotFoundError:
-
-            file = open("students.txt", "w")
-
-            file.close()
+                print()
