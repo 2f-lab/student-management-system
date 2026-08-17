@@ -1,3 +1,6 @@
+from exceptions import InvalidAgeError
+
+
 class Person:
 
     def __init__(self, name, age):
@@ -11,10 +14,13 @@ class Person:
     @age.setter
     def age(self, value):
 
-        if value >= 0:
-            self._age = value
-        else:
-            raise ValueError("Age cannot be negative.")
+        if value < 0:
+            raise InvalidAgeError("Age cannot be negative.")
+
+        if value > 100:
+            raise InvalidAgeError("Age cannot be above 100.")
+
+        self._age = value
 
     def introduce(self):
         print(f"My name is {self.name}.")
